@@ -1,4 +1,5 @@
-var express = require("express");
+var express = require("express"), 
+    port = process.env.PORT || 3000;
 
 app = express();
 
@@ -10,6 +11,6 @@ app.get("/happy", function (req, res) {
   res.send(":)");
 })
 
-app.listen("3000", function() {
+app.listen(port, function() {
   console.log("APP IS RUNNING");
 })
