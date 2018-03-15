@@ -4,7 +4,7 @@ var express = require("express"),
 app = express();
 
 app.get("/", function(req,res) {
-  res.send("Hi there from Express!!");
+  res.json( {message: "HELLO!"} ); // passing in an object reflects on the browser as json
 })
 
 app.get("/happy", function (req, res) {
