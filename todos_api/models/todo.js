@@ -18,7 +18,7 @@ var todoSchema = new mongoose.Schema({
 
 })
 
-var Todo = mongoose.model("Todo", todoSchema) // (name of model, Schema)
+var Todo = mongoose.model("Todo", todoSchema) // (name of model/collection, Schema)
 
 module.exports = Todo; // ready to exports the above model ^^
 
