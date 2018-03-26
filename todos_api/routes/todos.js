@@ -1,30 +1,13 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models") //only need models directory since all models are required in the index.js file
+var helpers = require("../helpers/todos");
 
 // actual route = /api/todos/
 
-// Retrieve all todos
-router.get("/", function(req, res) {
-  db.Todo.find()
-  .then(function(todos) {
-    res.json(todos);
-  })
-  .catch(function(err) {
-    res.send(err);
-  })
-});
-
-// post a single todo
-router.post("/", function(req, res) {
-  db.Todo.create(req.body)
-  .then(function(newTodo) {
-    res.status(201).json(newTodo);
-  })
-  .catch(function(err) {
-    res.send(err);
-  })
-});
+router.route("/")
+  .get(helpers.getTodos)
+  .post(helpers.createTodo);
 
 // Retrieve single todo
 router.get("/:todoId", function(req, res) {
