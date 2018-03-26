@@ -6,39 +6,12 @@ var helpers = require("../helpers/todos");
 // actual route = /api/todos/
 
 router.route("/")
-  .get(helpers.getTodos)
-  .post(helpers.createTodo);
+  .get(helpers.getTodos) // Retrieve all todos
+  .post(helpers.createTodo) // create a single todo
 
-// Retrieve single todo
-router.get("/:todoId", function(req, res) {
-  db.Todo.findById(req.params.todoId) //url params used to find the specific todo
-  .then(function(foundTodo) {
-    res.json(foundTodo);
-  })
-  .catch(function(err) {
-    res.send(err);
-  })
-});
-
-// Retrieve single todo and update it
-router.put("/:todoId", function(req, res) {
-  db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true})
-  .then(function(todo) {
-    res.json(todo);
-  })
-  .catch(function(err) {
-    res.send(err);
-  })
-})
-
-router.delete("/:todoId", function(req, res) {
-  db.Todo.remove({_id: req.params.todoId})
-  .then(function() {
-    res.json({message: "we deleted it!"});
-  })
-  .catch(function() {
-    res.send(err);
-  })
-})
+router.route("/:todoId")
+  .get(helpers.getTodo) // Retrieve single todo
+  .put(helpers.updateTodo) // Retrieve single todo and update it
+  .delete(helpers.deleteTodo) // Delete the single todo
 
 module.exports = router; //give access to these routes in index.js
