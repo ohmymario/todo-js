@@ -9,7 +9,7 @@ var todoRoutes = require("./routes/todos");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/views')) // references the current directory in order to find the /views html files
-app.use(express.static("public")) // for styles
+app.use(express.static(__dirname + '/public')) // for styles
 
 app.get("/", function(req,res) {
   res.sendFile("index.html"); 
