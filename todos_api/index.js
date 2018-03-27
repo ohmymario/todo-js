@@ -8,9 +8,10 @@ var todoRoutes = require("./routes/todos");
 // allow to access the body of a post/put request
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(__dirname + '/views')) // references the current directory in order to find the /views html files
 
 app.get("/", function(req,res) {
-  res.send("Hello from the root route"); // passing in an object reflects on the browser as json
+  res.sendFile("index.html"); 
 })
 
 app.use("/api/todos", todoRoutes); //enables all todo.js routes to begin with /api/todos
