@@ -6,7 +6,7 @@ $(document).ready(function () {
     .fail(function () {console.log("Something went wrong !")})
 
     $("#todoInput").keypress(function(event) {
-      var todoText = $('#todoInput').val().trim();
+      var todoText = $('#todoInput').val().trim(); // .trim eliminates whitespace
       if(event.which == 13 && todoText) {
         createTodo();
       }
