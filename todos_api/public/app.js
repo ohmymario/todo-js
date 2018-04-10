@@ -6,7 +6,8 @@ $(document).ready(function () {
     .fail(function () {console.log("Something went wrong !")})
 
     $("#todoInput").keypress(function(event) {
-      if(event.which == 13) {
+      var todoText = $('#todoInput').val().trim();
+      if(event.which == 13 && todoText) {
         createTodo();
       }
     });
